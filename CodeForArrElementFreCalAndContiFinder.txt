@@ -1,0 +1,70 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	  Scanner input = new Scanner(System.in);
+	  int t = input.nextInt();
+	  while(t-- >0){
+	      int size = input.nextInt();
+	      int[] arr = new int[size];
+	      for(int i = 0; i< size; i++){
+	          arr[i] = input.nextInt();
+	      }
+	      int flag = 0;
+	      int repeated = -1;
+	      int count = 0;
+	      int freq[] = new int[size];
+	      for(int i = 0; i < size; i++){
+	                count = 1;
+	          for(int j = i+1; j < size; j++){
+	         
+	              if(arr[i] == arr[j]){
+	                  count++;
+	                  freq[j] = repeated;
+	              }
+	          }
+	          if(freq[i] != repeated){
+	              freq[i] =  count;
+	          }
+	        
+	      }
+	        ArrayList<Integer> list = new ArrayList<>();
+	        for(int i = 0; i< size;i++){
+	             if(freq[i] != -1){
+	                 list.add(freq[i]);
+	             }
+	        }
+	    
+	     for(int i =0 ; i < list.size();i++){
+	         for(int j= i+1; j< list.size();j++){
+	             if(list.get(i) ==list.get(j)){
+	                 flag = 1;
+	             }
+	         }
+	     }
+	    
+	     for(int i = 0 ;i < size;i++){
+	         int unequal = 0;
+	         for(int j = i+1; j< size; j++){
+	             if(arr[i] != arr[j] ){
+	                 unequal = 1;
+	             }
+	              if(arr[i] == arr[j] && unequal == 1 ){
+	                 flag = 1;
+	             }
+	             
+	         }
+	     }
+	     if(flag == 1){
+	         System.out.println("NO");
+	     }
+	     else if(flag == 0){
+	         System.out.println("YES");
+	     }
+	  }
+	}
+}
